@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Run headless so that lanterna doesn't try to start a new
+# window to put the terminal in, which it does by default.
+java -Djava.awt.headless=true -cp .:lib/* $@
+
+# The lanterna library doesn't handle multi-threading well,
+# and it causes it to be unable to shut down cleanly, so we
+# reset the terminal to fix this.
+reset
